@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #8c5b36; /* Original primary for accents */
-            --deep-orange: #FF5722; /* Deep orange color */
+            --primary-color: #8c5b36;
+            --deep-orange: #FF5722;
             --background-dark: #0e1e40;
             --background-light: #2a5a78;
             --text-light: #fff;
@@ -19,7 +19,6 @@
             --border-soft: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Base styles for a 'soft touch' and 'dense' feel */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -30,23 +29,21 @@
             position: relative;
             min-height: 100vh;
         }
-        
-        /* The container now uses padding and a background for a denser look */
+       
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 16px;
-            background-image: url('back ground.png'); /* IMPORTANT: Ensure 'back ground.png' is in the same folder as this HTML file, or adjust path */
+            background-image: url('back ground.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             margin-top: 16px;
             margin-bottom: 16px;
-            border-radius: 8px; /* Added border-radius for consistency */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Added subtle shadow */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Logo styling */
         .logo {
             position: absolute;
             top: 20px;
@@ -58,13 +55,11 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
-        /* Improved 'soft touch' for interactive elements */
         a, button, .product {
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
-        /* Header styling */
         header {
             text-align: center;
             padding: 40px 16px;
@@ -82,17 +77,14 @@
 
         .slogan {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.8em; /* Increased size */
+            font-size: 1.8em;
             margin-top: 8px;
-            
-            /* Gradient Text Effect */
             background: linear-gradient(45deg, #FFFED8, #FFEC99);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
         }
 
-        /* Section headings */
         h2 {
             text-align: center;
             color: var(--text-light);
@@ -102,8 +94,7 @@
             font-size: 1.8em;
             margin-top: 40px;
         }
-        
-        /* Subheading styling with soft, smooth edges */
+       
         h3 {
             color: var(--deep-orange);
             background-color: rgba(255, 255, 255, 0.1);
@@ -112,16 +103,15 @@
             margin: 15px auto 5px;
             font-size: 1.1em;
             text-align: center;
-            display: inline-block; /* Allows background to fit text width */
+            display: inline-block;
         }
         .product-details h3 {
-             width: 80%; /* Adjusted width for product headings */
+             width: 80%;
              margin: 0 0 8px;
              padding: 8px 10px;
              font-size: 1.1em;
         }
-
-        /* Responsive and dense product grid */
+        
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -129,12 +119,11 @@
             padding: 0;
         }
 
-        /* Product card styling for 'soft touch' and density */
         .product {
             background-color: var(--card-bg);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 2px solid #000; /* Deep black lining */
+            border: 2px solid #000;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
@@ -143,6 +132,10 @@
             position: relative;
             display: flex;
             flex-direction: column;
+            
+            /* Reduced height for mobile screens */
+            max-height: 400px;
+            height: auto;
         }
 
         .product:hover {
@@ -156,11 +149,10 @@
 
         .product img {
             width: 100%;
-            height: 200px;
+            height: 150px; /* Reduced image height */
             object-fit: cover;
         }
-        
-        /* Product details with padding for density */
+       
         .product-details {
             padding: 16px;
             color: var(--text-light);
@@ -172,8 +164,21 @@
         }
 
         .product-details h3 {
-            color: var(--text-light); /* Override subheading color for products */
+            color: var(--text-light);
+            margin: 0 0 8px;
+            padding: 8px 10px;
+            font-size: 1em;
+            
+            /* Animation for product names */
+            animation: fadeIn 1s ease-in-out;
         }
+        
+        /* Keyframes for the fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .product-details p {
             margin: 0 0 12px;
             color: var(--text-muted);
@@ -183,13 +188,12 @@
         .price {
             font-size: 1.1em;
             font-weight: bold;
-            color: #000; /* Deep black dollar amounts */
+            color: #000;
             padding: 8px;
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* About us section (main content area) */
         .about-us {
             padding: 32px 16px;
             background-color: rgba(0, 0, 0, 0.6);
@@ -208,7 +212,6 @@
             color: #e0e0e0;
         }
 
-        /* Footer styling for the company tabs */
         footer {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 20px 16px;
@@ -282,7 +285,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Styling for the contact links */
         .contact-info {
             display: flex;
             flex-direction: column;
@@ -298,7 +300,6 @@
             text-decoration: underline;
         }
 
-        /* Media Queries for responsiveness */
         @media (min-width: 768px) {
             header h1 {
                 font-size: 3em;
@@ -306,6 +307,9 @@
             .product-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 20px;
+            }
+            .product img {
+                 height: 200px; /* Restore original image height for larger screens */
             }
             .footer-tabs {
                 flex-direction: row;
@@ -316,6 +320,7 @@
                 margin: 0 5px;
             }
         }
+        
     </style>
 </head>
 <body>
@@ -485,19 +490,15 @@
     
     <script>
         function showTab(tabId) {
-            // Hide all tab content
             const allTabs = document.querySelectorAll('.tab-content');
             allTabs.forEach(tab => tab.style.display = 'none');
             
-            // Deactivate all tab buttons
             const allButtons = document.querySelectorAll('.tab-button');
             allButtons.forEach(button => button.classList.remove('active'));
 
-            // Show the selected tab content and activate its button
             document.getElementById('tab-content-' + tabId).style.display = 'block';
             event.target.classList.add('active');
         }
     </script>
 </body>
 </html>
-
