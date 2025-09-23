@@ -17,6 +17,7 @@
             --text-muted: #ccc;
             --card-bg: rgba(255, 255, 255, 0.15);
             --border-soft: 1px solid rgba(255, 255, 255, 0.1);
+            --flip-back-bg: rgba(44, 62, 80, 0.88);
         }
 
         body {
@@ -26,10 +27,9 @@
             background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
             color: var(--text-light);
             line-height: 1.6;
-            position: relative;
             min-height: 100vh;
         }
-       
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -46,7 +46,7 @@
 
         .logo {
             display: block;
-            margin: 32px auto 8px auto; /* Center logo, add space below */
+            margin: 32px auto 8px auto;
             width: 80px;
             height: auto;
             border-radius: 50%;
@@ -70,7 +70,7 @@
 
         header h1 {
             margin: 0;
-            font-size: 1.8em; /* Reduced font size for the title */
+            font-size: 1.8em;
             line-height: 1.2;
         }
 
@@ -93,7 +93,7 @@
             font-size: 1.8em;
             margin-top: 40px;
         }
-       
+
         h3 {
             color: var(--deep-orange);
             background-color: rgba(255, 255, 255, 0.1);
@@ -111,7 +111,6 @@
              font-size: 1em;
              animation: fadeIn 1s ease-in-out;
         }
-        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -128,12 +127,12 @@
         .product-flip {
             perspective: 1000px;
             width: 100%;
-            height: 150px;
+            height: 180px;
             position: relative;
         }
         .product-front, .product-back {
             width: 100%;
-            height: 150px;
+            height: 180px;
             position: absolute;
             top: 0;
             left: 0;
@@ -141,6 +140,9 @@
             transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
             border-radius: 0;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .product-front {
             z-index: 2;
@@ -149,7 +151,17 @@
         .product-back {
             transform: rotateY(180deg);
             z-index: 1;
+            background: var(--flip-back-bg);
+            color: #fff;
+            flex-direction: column;
+            padding: 16px;
         }
+        .product-back .back-content {
+            width: 100%;
+            text-align: center;
+            padding: 8px 0;
+        }
+
         .product.flipped .product-front {
             transform: rotateY(180deg);
         }
@@ -157,7 +169,7 @@
             transform: rotateY(0deg);
         }
 
-        /* For desktop: flip on hover */
+        /* Desktop: flip on hover */
         @media (hover: hover) and (pointer: fine) {
             .product:hover .product-front {
                 transform: rotateY(180deg);
@@ -167,7 +179,7 @@
             }
         }
 
-        /* For mobile: flip on tap */
+        /* Mobile: flip on tap */
         @media (hover: none) and (pointer: coarse) {
             .product-flip {
                 cursor: pointer;
@@ -183,50 +195,47 @@
             overflow: hidden;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
             text-align: center;
-            transform: scale(1);
             position: relative;
             display: flex;
             flex-direction: column;
-            min-height: 370px; /* Ensures enough space in each box */
+            min-height: 370px;
             height: auto;
         }
 
-        .product:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-        }
-
-        .product:active {
-            transform: scale(0.98);
-        }
-
         .product-details {
-            padding: 16px 16px 32px 16px; /* More bottom padding */
+            padding: 16px 16px 52px 16px; /* More bottom padding for price visibility */
             color: var(--text-light);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;  /* Stack content at the top */
+            justify-content: flex-start;
             align-items: center;
             flex-grow: 1;
         }
-
         .product-details p {
             margin: 0 0 12px;
             color: var(--text-muted);
             font-size: 0.9em;
         }
-
         .price {
             font-size: 1.1em;
             font-weight: bold;
             color: #000;
-            padding: 8px;
+            padding: 8px 12px;
             border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.05);
-            margin-top: 16px;   /* Space above price */
-            margin-bottom: 0;   /* Prevent space below price */
+            background-color: rgba(255, 255, 255, 0.09);
+            margin-top: 16px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+        }
+        /* Flip back price style */
+        .product-back .price {
+            color: #fff;
+            background: var(--deep-orange);
+            margin: 12px auto 0 auto;
+            font-size: 1.15em;
         }
 
+        /* About Us and Footer styles unchanged from before */
         .about-us {
             padding: 32px 16px;
             background-color: rgba(0, 0, 0, 0.6);
@@ -317,7 +326,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-
         .contact-info {
             display: flex;
             flex-direction: column;
@@ -369,8 +377,23 @@
             header h1 {
                 font-size: 1.4em;
             }
+            .product-grid {
+                gap: 10px;
+            }
             .product {
-                min-height: 350px;
+                min-height: 250px; /* Smaller height for mobile */
+            }
+            .product-flip, .product-front, .product-back {
+                height: 110px;
+            }
+            .product-details {
+                padding: 12px 8px 28px 8px; /* less padding for mobile */
+            }
+            .price {
+                font-size: 1em;
+                margin-top: 10px;
+                margin-bottom: 5px;
+                padding: 6px 8px;
             }
         }
         
@@ -395,7 +418,11 @@
                         <img src="seedlings.png" alt="Coffee seedlings in the nursery bed" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <div class="product-back">
-                        <img src="seedlings.png" alt="Coffee seedlings in the nursery bed" style="width:100%;height:100%;object-fit:cover;">
+                        <div class="back-content">
+                            <h3>Coffee seedlings in the nursery bed</h3>
+                            <p>Young, vibrant coffee plants ready for transplantation.</p>
+                            <span class="price">$0.43 per seedling</span>
+                        </div>
                     </div>
                 </div>
                 <div class="product-details">
@@ -411,7 +438,11 @@
                         <img src="green beans.png" alt="Green coffee beans" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <div class="product-back">
-                        <img src="green beans.png" alt="Green coffee beans" style="width:100%;height:100%;object-fit:cover;">
+                        <div class="back-content">
+                            <h3>Green Beans (Arabica and Robusta)</h3>
+                            <p>Raw, unroasted coffee beans, ready for your custom roast.</p>
+                            <span class="price">$6.86 per kilo</span>
+                        </div>
                     </div>
                 </div>
                 <div class="product-details">
@@ -427,7 +458,11 @@
                         <img src="grean beans in jutes bag.png" alt="Green coffee beans in jute bags" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <div class="product-back">
-                        <img src="grean beans in jutes bag.png" alt="Green coffee beans in jute bags" style="width:100%;height:100%;object-fit:cover;">
+                        <div class="back-content">
+                            <h3>Green beans in a jutes bag</h3>
+                            <p>Bulk supply of green coffee beans in a sustainable jute bag.</p>
+                            <span class="price">$411.41 per bag</span>
+                        </div>
                     </div>
                 </div>
                 <div class="product-details">
@@ -443,7 +478,11 @@
                         <img src="roaster.png" alt="Coffee roasting machine" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <div class="product-back">
-                        <img src="roaster.png" alt="Coffee roasting machine" style="width:100%;height:100%;object-fit:cover;">
+                        <div class="back-content">
+                            <h3>Coffee Roaster</h3>
+                            <p>Roasting service for your green beans.</p>
+                            <span class="price">$0.71 per kg of green beans</span>
+                        </div>
                     </div>
                 </div>
                 <div class="product-details">
@@ -459,7 +498,11 @@
                         <img src="roasted robusta.png" alt="Roasted Robusta coffee beans" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <div class="product-back">
-                        <img src="roasted robusta.png" alt="Roasted Robusta coffee beans" style="width:100%;height:100%;object-fit:cover;">
+                        <div class="back-content">
+                            <h3>Roasted robusta coffee beans</h3>
+                            <p>Rich and bold Robusta beans, perfectly roasted for a strong brew, available in light, medium, or dark roast.</p>
+                            <span class="price">$20 per kilo</span>
+                        </div>
                     </div>
                 </div>
                 <div class="product-details">
@@ -475,7 +518,11 @@
                         <img src="Arabicca.png" alt="Roasted Arabicca Coffee" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <div class="product-back">
-                        <img src="Arabicca.png" alt="Roasted Arabicca Coffee" style="width:100%;height:100%;object-fit:cover;">
+                        <div class="back-content">
+                            <h3>Roasted Arabicca Coffee</h3>
+                            <p>Aromatic Arabica beans with a smooth flavor, available in light, medium, or dark roast.</p>
+                            <span class="price">$20 per kilo</span>
+                        </div>
                     </div>
                 </div>
                 <div class="product-details">
@@ -491,7 +538,11 @@
                         <img src="coffee brewing.png" alt="Coffee brews" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <div class="product-back">
-                        <img src="coffee brewing.png" alt="Coffee brews" style="width:100%;height:100%;object-fit:cover;">
+                        <div class="back-content">
+                            <h3>Coffee brews of all types</h3>
+                            <p>A wide variety of coffee brews, starting with espresso, the mother of all coffee.</p>
+                            <span class="price">From $1.71 to $8.57</span>
+                        </div>
                     </div>
                 </div>
                 <div class="product-details">
@@ -507,7 +558,11 @@
                         <img src="grownd coffee.png" alt="Ground coffee" style="width:100%;height:100%;object-fit:cover;">
                     </div>
                     <div class="product-back">
-                        <img src="grownd coffee.png" alt="Ground coffee" style="width:100%;height:100%;object-fit:cover;">
+                        <div class="back-content">
+                            <h3>Ground coffee in sizes of 1/2 kilos, 1 kilos for both Robusta and Arabicca of O'Yete coffee</h3>
+                            <p>Finely ground coffee from our Robusta and Arabica beans, ready for your coffee maker.</p>
+                            <span class="price">$7.14 for 1/2 kilo | $17.14 for 1 kilo</span>
+                        </div>
                     </div>
                 </div>
                 <div class="product-details">
@@ -610,7 +665,7 @@
         function showTab(tabId) {
             const allTabs = document.querySelectorAll('.tab-content');
             allTabs.forEach(tab => tab.style.display = 'none');
-            
+
             const allButtons = document.querySelectorAll('.tab-button');
             allButtons.forEach(button => button.classList.remove('active'));
 
