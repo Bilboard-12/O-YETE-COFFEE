@@ -625,7 +625,6 @@
         </div>
         <div id="tab-content-affiliates" class="tab-content" style="display: none;">
             <p>At O'YETE COFFEE ESTABLISHMENT LTD, we believe in growing together. Our Affiliate Programs are designed to empower individuals, organizations, and investors who share our vision of prom[...]
-
             <img src="trainings.png" alt="O'YETE Coffee Trainings" class="tab-image">
             <h3>🌱 Trainings</h3>
             <p>We conduct hands-on trainings in coffee farming, processing, and barista skills—helping farmers, entrepreneurs, and coffee enthusiasts build sustainable businesses.</p>
@@ -652,14 +651,15 @@
     </footer>
     
     <script>
-        // Card flip on tap for mobile
+        // Card flip on tap/click for ALL devices
         document.querySelectorAll('.product-flip').forEach(function(flip){
-            flip.addEventListener('click', function(e){
-                // Only toggle on touch devices
-                if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-                    flip.parentElement.classList.toggle('flipped');
-                }
-            });
+            function flipCard(e) {
+                // Prevent double event (for touch+click)
+                e.preventDefault();
+                flip.parentElement.classList.toggle('flipped');
+            }
+            flip.addEventListener('click', flipCard);
+            flip.addEventListener('touchstart', flipCard);
         });
 
         function showTab(tabId) {
