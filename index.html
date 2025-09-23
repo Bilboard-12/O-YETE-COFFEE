@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'YETE Coffee Establishment Ltd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8c5b36; /* Original primary for accents */
+            --deep-orange: #FF5722; /* Deep orange color */
+            --background-dark: #0e1e40;
+            --background-light: #2a5a78;
+            --text-light: #fff;
+            --text-muted: #ccc;
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --border-soft: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Base styles for a 'soft touch' and 'dense' feel */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* The container now uses padding and a background for a denser look */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+            background-image: url('back ground.png'); /* IMPORTANT: Ensure 'back ground.png' is in the same folder as this HTML file, or adjust path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            border-radius: 8px; /* Added border-radius for consistency */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Added subtle shadow */
+        }
+
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: auto;
+            z-index: 1000;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Improved 'soft touch' for interactive elements */
+        a, button, .product {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Header styling */
+        header {
+            text-align: center;
+            padding: 40px 16px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--text-light);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            line-height: 1.2;
+        }
+
+        .slogan {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em; /* Increased size */
+            margin-top: 8px;
+            
+            /* Gradient Text Effect */
+            background: linear-gradient(45deg, #FFFED8, #FFEC99);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        /* Section headings */
+        h2 {
+            text-align: center;
+            color: var(--text-light);
+            padding-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.8em;
+            margin-top: 40px;
+        }
+        
+        /* Subheading styling with soft, smooth edges */
+        h3 {
+            color: var(--deep-orange);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 15px auto 5px;
+            font-size: 1.1em;
+            text-align: center;
+            display: inline-block; /* Allows background to fit text width */
+        }
+        .product-details h3 {
+             width: 80%; /* Adjusted width for product headings */
+             margin: 0 0 8px;
+             padding: 8px 10px;
+             font-size: 1.1em;
+        }
+
+        /* Responsive and dense product grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            padding: 0;
+        }
+
+        /* Product card styling for 'soft touch' and density */
+        .product {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid #000; /* Deep black lining */
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            transform: scale(1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .product:active {
+            transform: scale(0.98);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        /* Product details with padding for density */
+        .product-details {
+            padding: 16px;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .product-details h3 {
+            color: var(--text-light); /* Override subheading color for products */
+        }
+        .product-details p {
+            margin: 0 0 12px;
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+
+        .price {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #000; /* Deep black dollar amounts */
+            padding: 8px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* About us section (main content area) */
+        .about-us {
+            padding: 32px 16px;
+            background-color: rgba(0, 0, 0, 0.6);
+            margin-top: 40px;
+            border-radius: 16px;
+            border-top: var(--border-soft);
+        }
+
+        .about-us p {
+            font-style: italic;
+            text-align: center;
+            max-width: 800px;
+            margin: 12px auto;
+            line-height: 1.5;
+            font-size: 0.95em;
+            color: #e0e0e0;
+        }
+
+        /* Footer styling for the company tabs */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px 16px;
+            margin-top: 40px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        footer h2 {
+            color: var(--deep-orange);
+            margin-top: 0;
+        }
+        .footer-tabs {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 10px;
+        }
+        .tab-button {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border-bottom: 2px solid transparent;
+            margin-bottom: 5px;
+        }
+        .tab-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .tab-button.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid var(--primary-color);
+            transform: scale(1.05);
+        }
+        .tab-content {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .tab-content p {
+            color: var(--deep-orange);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .tab-content p:last-child {
+            margin-bottom: 0;
+        }
+        .tab-content ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        .tab-content .role {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 0;
+        }
+        .tab-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 15px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Styling for the contact links */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: var(--deep-orange);
+            align-items: center;
+        }
+        .contact-info a {
+            color: var(--deep-orange);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 3em;
+            }
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            .footer-tabs {
+                flex-direction: row;
+                justify-content: center;
+                max-width: none;
+            }
+            .tab-button {
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="logo.png" alt="O'YETE Coffee Logo" class="logo">
+    
+    <header>
+        <h1>WELCOME TO O'YETE COFFEE ESTABLISHMENT LTD</h1>
+        <p class="slogan">"we are organic, we are divine."</p>
+    </header>
+
+    <div class="container">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+
+            <div class="product">
+                <img src="seedlings.png" alt="Coffee seedlings in the nursery bed">
+                <div class="product-details">
+                    <h3>Coffee seedlings in the nursery bed</h3>
+                    <p>Young, vibrant coffee plants ready for transplantation.</p>
+                    <span class="price">$0.43 per seedling</span>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="green beans.png" alt="Green coffee beans">
+                <div class="product-details">
+                    <h3>Green Beans (Arabica and Robusta)</h3>
+                    <p>Raw, unroasted coffee beans, ready for your custom roast.</p>
+                    <span class="price">$6.86 per kilo</span>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="grean beans in jutes bag.png" alt="Green coffee beans in jute bags">
+                <div class="product-details">
+                    <h3>Green beans in a jutes bag</h3>
+                    <p>Bulk supply of green coffee beans in a sustainable jute bag.</p>
+                    <span class="price">$411.41 per bag</span>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="roaster.png" alt="Coffee roasting machine">
+                <div class="product-details">
+                    <h3>Coffee Roaster</h3>
+                    <p>Roasting service for your green beans.</p>
+                    <span class="price">$0.71 per kg of green beans</span>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="roasted robusta.png" alt="Roasted Robusta coffee beans">
+                <div class="product-details">
+                    <h3>Roasted robusta coffee beans</h3>
+                    <p>Rich and bold Robusta beans, perfectly roasted for a strong brew, available in light, medium, or dark roast.</p>
+                    <span class="price">$20 per kilo</span>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="Arabicca.png" alt="Roasted Arabicca Coffee">
+                <div class="product-details">
+                    <h3>Roasted Arabicca Coffee</h3>
+                    <p>Aromatic Arabica beans with a smooth flavor, available in light, medium, or dark roast.</p>
+                    <span class="price">$20 per kilo</span>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="coffee brewing.png" alt="Coffee brews">
+                <div class="product-details">
+                    <h3>Coffee brews of all types</h3>
+                    <p>A wide variety of coffee brews, starting with espresso, the mother of all coffee.</p>
+                    <span class="price">From $1.71 to $8.57</span>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="grownd coffee.png" alt="Ground coffee">
+                <div class="product-details">
+                    <h3>Ground coffee in sizes of 1/2 kilos, 1 kilos for both Robusta and Arabicca of O'Yete coffee</h3>
+                    <p>Finely ground coffee from our Robusta and Arabica beans, ready for your coffee maker.</p>
+                    <span class="price">$7.14 for 1/2 kilo | $17.14 for 1 kilo</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="about-us">
+        <p>At the heart of our brand story lies the rich heritage and natural beauty of Northern Uganda. Nestled in the Acholi region, our coffee beans are cultivated in virgin arable land, where the fertile soil and ideal climate combine to create the perfect conditions for growth.</p>
+        <p>Our coffee embodies the essence of this pristine land, capturing its true taste and aroma. The soil's pH level imparts a distinctive flavour profile to our beans, resulting in a brew that is both aromatic and soothing, with a silky smooth texture that delights the senses.</p>
+        <p>Our story does not end there as our commitment to excellence goes beyond just delivering exceptional coffee. We believe in giving back to the community that nurtures our product. That is why we invest 10% of our proceeds into teaching and supporting local upcoming farmers in Northern Uganda. By empowering these farmers, we ensure the sustainability of our coffee production for generations to come.</p>
+        <p>Their dedication and hard work are evident in every sip, as we pay homage to their tireless efforts to cultivate some of the finest coffee beans in the world. Therefore, with every cup of our coffee you experience a taste of greatness triumph</p>
+        <p>celebration of the resilience and spirit of the people of Northern Uganda.
+        Join us on a journey to savour the flavours of this remarkable land and experience the joy of a truly exceptional cup of coffee.</p>
+    </div>
+
+    <footer>
+        <h2>Company</h2>
+        <div class="footer-tabs">
+            <button class="tab-button active" onclick="showTab('about')">About Us</button>
+            <button class="tab-button" onclick="showTab('team')">Our Team</button>
+            <button class="tab-button" onclick="showTab('contacts')">Contacts</button>
+            <button class="tab-button" onclick="showTab('affiliates')">Affiliate Programs</button>
+        </div>
+        <div id="tab-content-about" class="tab-content">
+            <p>O'YETE COFFEE ESTABLISHMENT LTD is dedicated to delivering premium-quality coffee, carefully sourced from Uganda’s finest farmers. We value authenticity, sustainability, and excellence in every cup. Our mission is to connect coffee lovers with rich, flavorful experiences while supporting local communities and promoting environmentally friendly practices.</p>
+            <p>At O'YETE Coffee, we believe coffee is more than a drink—it’s a culture, a story, and a bridge that brings people together.</p>
+        </div>
+        <div id="tab-content-team" class="tab-content" style="display: none;">
+            <p>At O'YETE COFFEE ESTABLISHMENT LTD, our strength lies in the passionate people behind every bean. We are guided by experienced professionals who share a deep love for coffee, sustainability, and community growth.</p>
+            <h3>Okello James</h3>
+            <p class="role">Founder & CEO</p>
+            <p>Visionary leader with a passion for coffee farming and empowering local growers.</p>
+            <h3>Aloyo Sharon</h3>
+            <p class="role">Operations Manager</p>
+            <p>Oversees daily operations, ensuring smooth delivery from farm to cup.</p>
+            <h3>Mugisha Daniel</h3>
+            <p class="role">Head of Quality & Production</p>
+            <p>Dedicated to maintaining world-class standards in sourcing and roasting.</p>
+            <h3>Namugenyi Grace</h3>
+            <p class="role">Marketing & Customer Relations</p>
+            <p>Builds strong relationships with clients while sharing the O'YETE Coffee story globally.</p>
+            <h3>Team of Farmers & Baristas</h3>
+            <p>Our extended family of farmers, roasters, and baristas ensure that every sip you enjoy reflects the heart of Uganda.</p>
+        </div>
+        <div id="tab-content-contacts" class="tab-content" style="display: none;">
+            <p>Connect with us on social media or reach out directly:</p>
+            <div class="contact-info">
+                <p><strong>Office:</strong> Gulu City</p>
+                <p><strong>Email:</strong> <a href="mailto:O'yetecoffee@gmail.com">O'yetecoffee@gmail.com</a></p>
+                <p><strong>Tel:</strong> <a href="tel:+256777648113">+256 777 648113</a></p>
+                <p><strong>Whatsapp:</strong> <a href="https://wa.me/256756822218">+256 756 822218</a></p>
+                <p><strong>Facebook:</strong> [Your Facebook Page Link]</p>
+                <p><strong>Twitter (X):</strong> [Your Twitter/X Page Link]</p>
+            </div>
+        </div>
+        <div id="tab-content-affiliates" class="tab-content" style="display: none;">
+            <p>At O'YETE COFFEE ESTABLISHMENT LTD, we believe in growing together. Our Affiliate Programs are designed to empower individuals, organizations, and investors who share our vision of promoting premium coffee and community development.</p>
+
+            <img src="trainings.png" alt="O'YETE Coffee Trainings" class="tab-image">
+            <h3>🌱 Trainings</h3>
+            <p>We conduct hands-on trainings in coffee farming, processing, and barista skills—helping farmers, entrepreneurs, and coffee enthusiasts build sustainable businesses.</p>
+            
+            <img src="partners.png" alt="O'YETE Coffee Partnerships" class="tab-image">
+            <h3>🤝 Partnerships</h3>
+            <p>Join us as a partner to explore opportunities in distribution, branding, and international coffee trade. Together, we can expand the reach of Uganda’s finest coffee.</p>
+
+            <h3>📊 Consultations</h3>
+            <p>Our experts provide professional advice on coffee quality management, business development, and investment opportunities within the coffee value chain.</p>
+
+            <img src="Awards.png" alt="O'YETE Coffee Awards" class="tab-image">
+            <h3>💼 Shareholding Opportunities</h3>
+            <p>Invest in O'YETE Coffee by purchasing shares and become part of our growth story. We welcome investors who believe in our mission of excellence and sustainability.</p>
+
+            <h3>✨ Why Join Our Affiliate Programs?</h3>
+            <ul>
+                <li>Access to expert knowledge and mentorship</li>
+                <li>Shared benefits through partnerships and investments</li>
+                <li>Contribution to sustainable community growth</li>
+                <li>Recognition and rewards for active affiliates</li>
+            </ul>
+        </div>
+    </footer>
+    
+    <script>
+        function showTab(tabId) {
+            // Hide all tab content
+            const allTabs = document.querySelectorAll('.tab-content');
+            allTabs.forEach(tab => tab.style.display = 'none');
+            
+            // Deactivate all tab buttons
+            const allButtons = document.querySelectorAll('.tab-button');
+            allButtons.forEach(button => button.classList.remove('active'));
+
+            // Show the selected tab content and activate its button
+            document.getElementById('tab-content-' + tabId).style.display = 'block';
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
