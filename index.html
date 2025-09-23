@@ -45,14 +45,13 @@
         }
 
         .logo {
-            position: absolute;
-            top: 100px; /* Brought the logo down */
-            left: 20px;
+            display: block;
+            margin: 32px auto 8px auto; /* Center logo, add space below */
             width: 80px;
             height: auto;
-            z-index: 1000;
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            position: static;
         }
 
         a, button, .product {
@@ -62,11 +61,11 @@
 
         header {
             text-align: center;
-            padding: 40px 16px;
+            padding: 40px 16px 16px 16px;
             background-color: rgba(0, 0, 0, 0.5);
             color: var(--text-light);
             border-radius: 8px;
-            margin-top: 50px;
+            margin-top: 0;
         }
 
         header h1 {
@@ -110,7 +109,6 @@
              margin: 0 0 8px;
              padding: 8px 10px;
              font-size: 1em;
-            
              animation: fadeIn 1s ease-in-out;
         }
         
@@ -289,6 +287,7 @@
             text-decoration: underline;
         }
 
+        /* Desktop adjustments */
         @media (min-width: 768px) {
             header h1 {
                 font-size: 3em;
@@ -307,6 +306,25 @@
             }
             .tab-button {
                 margin: 0 5px;
+            }
+        }
+
+        /* Responsive fix for logo overlapping header on phones */
+        @media (max-width: 600px) {
+            .logo {
+                position: static;
+                display: block;
+                margin: 32px auto 8px auto;
+                left: auto;
+                top: auto;
+                width: 60px;
+            }
+            header {
+                margin-top: 0 !important;
+                padding-top: 8px;
+            }
+            header h1 {
+                font-size: 1.4em;
             }
         }
         
