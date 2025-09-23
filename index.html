@@ -46,7 +46,7 @@
 
         .logo {
             position: absolute;
-            top: 20px;
+            top: 100px; /* Brought the logo down */
             left: 20px;
             width: 80px;
             height: auto;
@@ -71,7 +71,7 @@
 
         header h1 {
             margin: 0;
-            font-size: 2.2em;
+            font-size: 1.8em; /* Reduced font size for the title */
             line-height: 1.2;
         }
 
@@ -109,9 +109,16 @@
              width: 80%;
              margin: 0 0 8px;
              padding: 8px 10px;
-             font-size: 1.1em;
+             font-size: 1em;
+            
+             animation: fadeIn 1s ease-in-out;
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -132,8 +139,6 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            
-            /* Reduced height for mobile screens */
             max-height: 400px;
             height: auto;
         }
@@ -149,7 +154,7 @@
 
         .product img {
             width: 100%;
-            height: 150px; /* Reduced image height */
+            height: 150px;
             object-fit: cover;
         }
        
@@ -161,22 +166,6 @@
             justify-content: space-between;
             align-items: center;
             flex-grow: 1;
-        }
-
-        .product-details h3 {
-            color: var(--text-light);
-            margin: 0 0 8px;
-            padding: 8px 10px;
-            font-size: 1em;
-            
-            /* Animation for product names */
-            animation: fadeIn 1s ease-in-out;
-        }
-        
-        /* Keyframes for the fade-in animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .product-details p {
@@ -309,7 +298,7 @@
                 gap: 20px;
             }
             .product img {
-                 height: 200px; /* Restore original image height for larger screens */
+                 height: 200px;
             }
             .footer-tabs {
                 flex-direction: row;
