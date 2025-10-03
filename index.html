@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to O'YETE Coffee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --primary-color: #8c5b36;
+    --deep-orange: #FF5722;
+    --background-dark: #0e1e40;
+    --background-light: #2a5a78;
+    --text-light: #fff;
+    --text-muted: #ddd;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(145deg, var(--background-dark), var(--background-light));
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.landing-content {
+    max-width: 1000px;
+    width: 100%;
+    padding: 40px;
+    background: rgba(0,0,0,0.55);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    text-align: center;
+    animation: fadeInScale 1.5s ease-out;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.logo {
+    width: 130px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255,255,255,0.25);
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+}
+.logo:hover {
+    transform: scale(1.05);
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-light);
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
+}
+
+.slogan {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #FFFED8, #FFEC99);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+}
+
+p {
+    font-size: 1.1em;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.awards-section {
+    margin: 30px 0;
+}
+.awards-section h2 {
+    font-size: 1.6em;
+    color: var(--deep-orange);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+}
+.awards-img {
+    max-width: 100%;
+    width: 320px;
+    height: auto;
+    border-radius: 15px;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.awards-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.cta-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 16px 36px;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-light);
+    background: var(--deep-orange);
+    border-radius: 50px;
+    box-shadow: 0 6px 20px rgba(255,87,34,0.5);
+    transition: all 0.35s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.cta-button.secondary {
+    background: var(--primary-color);
+    box-shadow: 0 6px 20px rgba(140,91,54,0.5);
+}
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(255,87,34,0.7);
+}
+.cta-button.secondary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(140,91,54,0.7);
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.5em; }
+    .slogan { font-size: 1.9em; }
+    p { font-size: 1em; padding: 0 10px; }
+    .cta-button { font-size: 1em; padding: 12px 28px; }
+    .awards-img { width: 220px; }
+    .landing-content { padding: 30px 20px; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2em; }
+    .slogan { font-size: 1.6em; }
+    p { font-size: 0.95em; }
+    .cta-button { font-size: 0.95em; padding: 10px 24px; }
+    .awards-img { width: 180px; }
+}
+</style>
+</head>
+<body>
+
+<div class="landing-content">
+    <img src="logo.png" alt="O'YETE Coffee Logo" class="logo">
+    
+    <h1>O'YETE COFFEE ESTABLISHMENT LTD</h1>
+    <p class="slogan">"We are organic, we are divine. ✨"</p>
+    
+    <p>
+        Experience the true taste of Uganda. We meticulously source premium Arabica and Robusta beans from the pristine farmlands of Northern Uganda, bringing you a coffee experience rooted in quality, sustainability, and community empowerment.
+    </p>
+
+    <div class="awards-section">
+        <h2>Our Recognized Quality</h2>
+        <img src="Awards.png" alt="Recognition and Quality Awards for O'YETE Coffee" class="awards-img">
+    </div>
+
+    <div class="cta-container">
+        <a href="about.html" class="cta-button">Our Products & Story</a>
+        <a href="about.html#tab-content-contacts" class="cta-button secondary">Get in Touch</a>
+    </div>
+</div>
+
+</body>
+</html>
