@@ -4,9 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Welcome to O'YETE Coffee</title>
+
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:title" content="O'YETE Coffee Establishment Ltd">
+<meta property="og:description" content="Experience premium organic coffee from Northern Uganda.">
+<meta property="og:image" content="https://bilboard-12.github.io/O-YETE-COFFEE/logo.png">
+<meta property="og:url" content="https://bilboard-12.github.io/O-YETE-COFFEE/">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="O'YETE Coffee Establishment Ltd">
+<meta name="twitter:description" content="Experience premium organic coffee from Northern Uganda.">
+<meta name="twitter:image" content="https://bilboard-12.github.io/O-YETE-COFFEE/logo.png">
+
 <style>
 :root {
     --primary-color: #8c5b36;
@@ -20,12 +35,12 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
     background: linear-gradient(145deg, var(--background-dark), var(--background-light));
     color: var(--text-light);
     min-height: 100vh;
@@ -52,15 +67,15 @@ body {
 }
 
 .logo {
-    width: 130px;
+    width: 140px;
     height: auto;
     border-radius: 50%;
-    box-shadow: 0 0 30px rgba(255,255,255,0.25);
+    box-shadow: 0 0 35px rgba(255,255,255,0.25);
     margin-bottom: 25px;
     transition: transform 0.3s ease;
 }
 .logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 h1 {
@@ -149,6 +164,7 @@ p {
     box-shadow: 0 10px 30px rgba(140,91,54,0.7);
 }
 
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     h1 { font-size: 2.5em; }
     .slogan { font-size: 1.9em; }
